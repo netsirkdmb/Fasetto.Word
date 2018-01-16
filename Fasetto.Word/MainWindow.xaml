@@ -5,7 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        x:Name="AppWindow"
+        Icon="Images/Logo/logo-small.png"
+        Title="Welcome, friend!" Height="600" Width="900">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            />
+    </WindowChrome.WindowChrome>
+    
     <Grid>
         
     </Grid>
