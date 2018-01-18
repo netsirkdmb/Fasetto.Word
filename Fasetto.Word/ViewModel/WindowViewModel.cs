@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Fasetto.Word
 {
@@ -57,7 +58,7 @@ namespace Fasetto.Word
         /// The thickness of the margin around the window to allow for a drop shadow
         /// </summary>
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
-        
+
         /// <summary>
         /// The radius of the edges of the window
         /// </summary>
@@ -77,6 +78,40 @@ namespace Fasetto.Word
         /// The corner radius of the edges of the window
         /// </summary>
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(WindowRadius); } }
+
+        /// <summary>
+        /// The height of the title bar / caption of the window
+        /// </summary>
+        public int TitleHeight { get; set; } = 42;
+
+        /// <summary>
+        /// The height of the title bar / caption of the window
+        /// </summary>
+        public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// The command to minimize the window
+        /// </summary>
+        public ICommand MinimizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to maximize the window
+        /// </summary>
+        public ICommand MaximizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to close the window
+        /// </summary>
+        public ICommand CloseCommand { get; set; }
+
+        /// <summary>
+        /// The command to show the system menu of the window
+        /// </summary>
+        public ICommand MenuCommand { get; set; }
 
         #endregion
 
@@ -100,11 +135,25 @@ namespace Fasetto.Word
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
             };
+
+            // Create commands
+            MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized); // Will toggle between Maximized (2) and Normal (0) with XOR
+            CloseCommand = new RelayCommand(() => mWindow.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
         }
 
-        private void MWindow_StateChanged(object sender, System.EventArgs e)
+        #endregion
+
+        #region Private Helpers
+
+        private Point GetMousePosition()
         {
-            throw new System.NotImplementedException();
+            // Position of the mouse relative to the window
+            var position = Mouse.GetPosition(mWindow);
+
+            // Add the window position so it's a "ToScreen"
+            return new Point(position.X + mWindow.Left, position.Y + mWindow.Top);
         }
 
         #endregion
