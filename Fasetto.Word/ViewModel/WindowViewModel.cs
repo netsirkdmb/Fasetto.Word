@@ -30,6 +30,16 @@ namespace Fasetto.Word
         #region Public Properties
 
         /// <summary>
+        /// The smallest width the window can go to
+        /// </summary>
+        public double WindowMinimumWidth { get; set; } = 400;
+        
+        /// <summary>
+        /// The smallest height the window can go to
+        /// </summary>
+        public double WindowMinimumHeight { get; set; } = 400;
+        
+        /// <summary>
         /// The size of the resize border around the window
         /// </summary>
         public int ResizeBorder { get; set; } = 6;
@@ -38,6 +48,11 @@ namespace Fasetto.Word
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
+
+        /// <summary>
+        /// The padding of the inner content of the main window
+        /// </summary>
+        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow
@@ -141,12 +156,19 @@ namespace Fasetto.Word
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized); // Will toggle between Maximized (2) and Normal (0) with XOR
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+
+            // Fix window resize issue
+            var resizer = new WindowResizer(mWindow);
         }
 
         #endregion
 
         #region Private Helpers
 
+        /// <summary>
+        /// Gets the current mouse position on the screen
+        /// </summary>
+        /// <returns></returns>
         private Point GetMousePosition()
         {
             // Position of the mouse relative to the window
