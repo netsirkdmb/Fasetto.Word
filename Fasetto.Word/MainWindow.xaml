@@ -50,7 +50,6 @@
                                         
                                         <!-- Title Bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
-
                                         <!-- Window Content -->
                                         <RowDefinition Height="*" />
 
@@ -108,7 +107,7 @@
             />
     </WindowChrome.WindowChrome>
     
-    <Grid>
-        <!--<Button Content="test" />-->
+    <Grid Background="{StaticResource ForegroundLightBrush}">
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
     </Grid>
 </Window>
