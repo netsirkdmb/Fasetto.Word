@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:Fasetto.Word"
       mc:Ignorable="d" 
       x:Name="Page"
-      d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
 
     <Border>
