@@ -17,7 +17,7 @@ namespace Fasetto.Word
         /// <summary>
         /// A single static instance of this value converter
         /// </summary>
-        private static T mConverter = null;
+        private static T Converter = null;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace Fasetto.Word
             //return mConverter;
 
             // same as above, commented-out statements
-            return mConverter ?? (mConverter = new T());
+            return Converter ?? (Converter = new T());
         }
 
         #endregion

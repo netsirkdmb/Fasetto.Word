@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Fasetto.Word.Core;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Fasetto.Word
@@ -113,11 +114,6 @@ namespace Fasetto.Word
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
-
-        /// <summary>
-        /// The current page of the application
-        /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
 
         #endregion
 
