@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.Remoting.Channels;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Fasetto.Word
@@ -61,7 +58,8 @@ namespace Fasetto.Word
             // Move the previous page into the old page frame
             oldPageFrame.Content = oldPageContent;
 
-            // Animate out previous page
+            // Animate out previous page when the loaded event fires
+            // right afer this call due to moving frames
             if (oldPageContent is BasePage oldPage)
             {
                 oldPage.ShouldAnimateOut = true;

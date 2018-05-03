@@ -29,13 +29,13 @@
 
                             <!-- Sign up header -->
                             <TextBlock Text="Sign Up" 
-                                   FontSize="{StaticResource FontSizeLarge}"
+                                   FontSize="{StaticResource FontSizeXXLarge}"
                                    FontFamily="{StaticResource LatoRegular}"
                                    Foreground="{StaticResource WordBlueBrush}" />
 
                             <!-- Sign up subtext -->
                             <TextBlock Text="It's about to get fun"
-                                       FontSize="{StaticResource FontSizeRegular}"
+                                       FontSize="{StaticResource FontSizeLarge}"
                                        Foreground="{StaticResource ForegroundDarkBrush}" 
                                        Margin="0 0 0 20"/>
 
@@ -51,7 +51,6 @@
                                     Command="{Binding RegisterCommand}" 
                                     CommandParameter="{Binding ElementName=Page}" 
                                     HorizontalAlignment="Center" />
-
                         </StackPanel>
                     </Border>
 
@@ -59,7 +58,6 @@
                             Content="I already have an account..." 
                             HorizontalAlignment="Center" 
                             Command="{Binding LoginCommand}" />
-
                 </StackPanel>
             </ScrollViewer>
         </Grid>

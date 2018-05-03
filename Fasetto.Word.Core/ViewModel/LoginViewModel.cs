@@ -67,7 +67,7 @@ namespace Fasetto.Word.Core
                 // Go to chat page
                 IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
 
-                var email = Email;
+                //var email = Email;
 
                 //// IMPORTANT: Never store unsecure password in variable like this
                 // var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
